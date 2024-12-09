@@ -1,0 +1,30 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@peter-djarv-cgi/core-module@^0.0.4": "0.0.4",
+    "jsr:@std/cli@1": "1.0.7",
+    "jsr:@std/path@1": "1.0.8",
+    "jsr:@std/path@^1.0.8": "1.0.8"
+  },
+  "jsr": {
+    "@peter-djarv-cgi/core-module@0.0.4": {
+      "integrity": "2b9a29a8e4bc088d64c4e1297ff69aeaee4461933d36e31957c4e13810ed5df5",
+      "dependencies": [
+        "jsr:@std/cli",
+        "jsr:@std/path@1"
+      ]
+    },
+    "@std/cli@1.0.7": {
+      "integrity": "98359df9df586a69015ba570305183b0cb9e7d53c05ea2016ef9a3e77e82c7cd"
+    },
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@peter-djarv-cgi/core-module@^0.0.4",
+      "jsr:@std/path@^1.0.8"
+    ]
+  }
+}
