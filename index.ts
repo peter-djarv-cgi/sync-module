@@ -1,12 +1,6 @@
 import { basename } from '@std/path';
 
-import { SESSION, LOG_COLORS } from '@peter-djarv-cgi/core-module';
-
-type SyncFileArgs = {
-  filePath: string;
-  remoteDir: string;
-  environmentName: string;
-};
+import { SESSION, LOG_COLORS, SYSTEM_PATH } from '@peter-djarv-cgi/core-module';
 
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
   const response = await fetch(url, {
@@ -30,10 +24,13 @@ async function createDirectory(url: string, authHeader: string): Promise<boolean
 }
 
 // Sync file function
-export async function syncFile({ filePath, remoteDir, environmentName }: SyncFileArgs) {
+export async function syncFile(filePath: string) {
   try {
     // Fetch credentials from session
-    const credentials = await SESSION.getCredentials(environmentName);
+    const host = SESSION.projectConfig.host;
+    const name = SESSION.projectConfig.name;
+    const remoteDir = `${host}${SYSTEM_PATH}`;
+    const credentials = await SESSION.getCredentials(name);
     const username = credentials.username;
     const password = credentials.password;
 
