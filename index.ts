@@ -27,6 +27,9 @@ async function createDirectory(url: string, authHeader: string): Promise<boolean
 export async function syncFile(filePath: string) {
   try {
     // Fetch credentials from session
+    if (!SESSION.projectConfig) {
+      return;
+    }
     const host = SESSION.projectConfig.host;
     const name = SESSION.projectConfig.name;
     const remoteDir = `${host}${SYSTEM_PATH}`;
