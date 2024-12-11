@@ -144,6 +144,6 @@ syncFile();
 export { syncFile };
 
 // Group all the functionality into a single object `syncModule`
-export const sassModule = {
+export const syncModule = {
   syncFile,
 };
