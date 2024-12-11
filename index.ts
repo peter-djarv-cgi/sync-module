@@ -138,8 +138,6 @@ async function syncFile() {
   }
 }
 
-syncFile();
-
 // Export the syncFile function
 export { syncFile };
 
