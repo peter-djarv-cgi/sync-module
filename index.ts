@@ -59,7 +59,7 @@ function parseFlags(): string {
 }
 
 // Sync file function
-export async function syncFile() {
+async function syncFile() {
   try {
     const filePath = parseFlags();
 
@@ -139,3 +139,11 @@ export async function syncFile() {
 }
 
 syncFile();
+
+// Export the syncFile function
+export { syncFile };
+
+// Group all the functionality into a single object `syncModule`
+export const sassModule = {
+  syncFile,
+};
