@@ -1,4 +1,4 @@
-import { basename } from '@std/path';
+import { basename } from 'jsr:@std/path';
 
 import { SESSION, LOG_COLORS, SYSTEM_PATH } from '@peter-djarv-cgi/core-module';
 
