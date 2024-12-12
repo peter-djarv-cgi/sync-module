@@ -44,7 +44,6 @@ function parseFlags(): string {
   }
 
   const filePath = flags['file-path'];
-  isChildProcess = flags['child-process'] === 'true';
 
   if (!filePath) {
     logMessage('%cUsage: `%cdeno run index.ts --file-path=<path> --child-process=true/false%c`',
@@ -136,6 +135,11 @@ async function syncFile() {
       logMessage('%cSuggestion: Please verify your authentication credentials and try again.', LOG_COLORS.WARNING);
     }
   }
+}
+
+// Executes the build process, identifying if it's a child process using an environment variable
+if (import.meta.main) {
+  isChildProcess = Deno.env.get('IS_CHILD_PROCESS') === 'true';
 }
 
 // Export the syncFile function
