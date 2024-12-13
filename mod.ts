@@ -6,28 +6,22 @@ let isChildProcess: boolean;
 
 function parseFlags(): string {
   const args = Deno.args;
-  const flags: { [key: string]: string } = {};
 
   for (const arg of args) {
     const [key, value] = arg.split('=');
-    if (key && value) {
-      flags[key] = value;
+    if (key === 'file-path') {
+      return value;
     }
   }
 
-  const filePath = flags['file-path'];
-
-  if (!filePath) {
-    logMessage(
-      '%cUsage: `%cdeno run index.ts file-path=<path>%c`',
-      LOG_COLORS.ERROR,
-      LOG_COLORS.COMMAND,
-      LOG_COLORS.ERROR,
-    );
-    Deno.exit(1);
-  }
-
-  return filePath;
+  // If the flag is not provided, log an error and exit
+  logMessage(
+    '%cError. Usage: `%cdeno run index.ts file-path=<path>%c`',
+    LOG_COLORS.ERROR,
+    LOG_COLORS.COMMAND,
+    LOG_COLORS.ERROR,
+  );
+  Deno.exit(1);
 }
 
 function runSync(filePath: string) {
@@ -44,10 +38,11 @@ if (import.meta.main) {
 }
 
 export {
+  runSync,
   syncFile,
 };
 
 /*
 Example usage:
-deno run sync file-path=c:\dev\build_script\dist\header.css
+deno run sync flag-path=c:\dev\build_script\dist\header.css
 */

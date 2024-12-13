@@ -1,6 +1,6 @@
 {
   "name": "@peter-djarv-cgi/sync-module",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "UNLICENSED",
   "exports": {
     ".": "./mod.ts"
@@ -12,7 +12,7 @@
     "checkJs": true
   },
   "imports": {
-    "@peter-djarv-cgi/core-module": "jsr:@peter-djarv-cgi/core-module@^0.0.14",
+    "@peter-djarv-cgi/core-module": "jsr:@peter-djarv-cgi/core-module@^0.0.15",
     "@std/path": "jsr:@std/path@^1.0.8"
   }
 }
