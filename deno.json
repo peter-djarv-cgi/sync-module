@@ -3,10 +3,10 @@
   "version": "0.0.9",
   "license": "UNLICENSED",
   "exports": {
-    ".": "./index.ts"
+    ".": "./mod.ts"
   },
   "tasks": {
-    "sync": "deno run --allow-read --allow-run --allow-env --allow-net index.ts"
+    "sync": "deno run --allow-read --allow-run --allow-env --allow-net mod.ts"
   },
   "compilerOptions": {
     "checkJs": true
