@@ -44,5 +44,5 @@ export {
 
 /*
 Example usage:
-deno run sync flag-path=c:\dev\build_script\dist\header.css
+deno run sync file-path=c:\dev\build_script\dist\header.css
 */
