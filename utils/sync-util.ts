@@ -1,5 +1,5 @@
 import { basename } from 'jsr:@std/path@1.0.8';
-import { SESSION, LOG_COLORS, SYSTEM_PATH, initializeProject } from '@peter-djarv-cgi/core-module';
+import { SESSION, LOG_COLORS, SYSTEM_PATH } from '@peter-djarv-cgi/core-module';
 import { logMessage } from "./log-util.ts";
 
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
@@ -65,15 +65,11 @@ async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: 
 // Main sync function
 async function syncFile(filePath: string) {
   try {
-    await initializeProject();
+    const projectConfig = await SESSION.getProjectConfig();
+    const credentials = await SESSION.getCredentials();
 
-    // Ensure the project file is loaded into the session
-    if (!SESSION.projectConfig) return;
-
-    const host = SESSION.projectConfig.host;
-    const name = SESSION.projectConfig.name;
+    const host = projectConfig.host;
     const remoteDir = `${host}${SYSTEM_PATH}`;
-    const credentials = await SESSION.getCredentials(name);
     const username = credentials.username;
     const password = credentials.password;
 
@@ -107,7 +103,7 @@ async function syncFile(filePath: string) {
   } catch (error) {
     if (error instanceof Error) {
       logMessage(`%cAn error occurred during file synchronization: ${error.message}`, LOG_COLORS.ERROR);
-      logMessage('%cSuggestion: Please verify your authentication credentials and try again.', LOG_COLORS.WARNING);
+      logMessage('%cSuggestion: Please verify your authentication credentials and try again.', LOG_COLORS.INFO);
       Deno.exit(1);
     }
   }

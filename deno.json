@@ -12,7 +12,7 @@
     "checkJs": true
   },
   "imports": {
-    "@peter-djarv-cgi/core-module": "jsr:@peter-djarv-cgi/core-module@^0.0.15",
+    "@peter-djarv-cgi/core-module": "../core-module/mod.ts",
     "@std/path": "jsr:@std/path@^1.0.8"
   }
 }
