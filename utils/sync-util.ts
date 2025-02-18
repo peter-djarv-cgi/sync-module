@@ -1,5 +1,5 @@
 import { basename } from 'jsr:@std/path@1.0.8';
-import { SESSION, LOG_COLORS, SYSTEM_PATH } from '@peter-djarv-cgi/core-module';
+import { getSession, LOG_COLORS, SYSTEM_PATH } from '@cgi/core-module';
 import { logMessage } from "./log-util.ts";
 
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
@@ -65,6 +65,7 @@ async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: 
 // Main sync function
 async function syncFile(filePath: string) {
   try {
+    const SESSION = await getSession();
     const projectConfig = await SESSION.getProjectConfig();
     const credentials = await SESSION.getCredentials();
 
