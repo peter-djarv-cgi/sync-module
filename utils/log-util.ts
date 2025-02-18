@@ -1,4 +1,4 @@
-import { DEBUG, LOG_COLORS } from '@peter-djarv-cgi/core-module';
+import { DEBUG, LOG_COLORS } from '@cgi/core-module';
 
 let isChildProcess = false;
 

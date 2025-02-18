@@ -1,4 +1,4 @@
-import { LOG_COLORS, IS_CHILD_PROCESS } from '@peter-djarv-cgi/core-module';
+import { LOG_COLORS, IS_CHILD_PROCESS } from '@cgi/core-module';
 import { syncFile } from './utils/sync-util.ts';
 import { logMessage, setChildProcessFlag } from './utils/log-util.ts';
 
@@ -41,8 +41,3 @@ export {
   runSync,
   syncFile,
 };
-
-/*
-Example usage:
-deno run sync file-path=c:\dev\build_script\dist\header.css
-*/
