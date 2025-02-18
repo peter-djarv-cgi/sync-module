@@ -47,7 +47,7 @@ async function ensureDirectoryExists(remoteDir: string, authHeader: string): Pro
 
 // Reads the local file content
 async function readLocalFile(filePath: string): Promise<Uint8Array> {
-  return await Deno.readFile(filePath); // requires allow-read
+  return await Deno.readFile(filePath);
 }
 
 // Uploads the file to the remote server using a PUT request
