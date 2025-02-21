@@ -1,5 +1,5 @@
 import { basename } from '@std/path';
-import { LOG_COLORS, SYSTEM_PATH, getSession, logMessage } from '@cgi/core-module';
+import { LOG_COLORS, SYSTEM_PATH, formatTimeAbbrev, getSession, logMessage } from '@cgi/core-module';
 
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
   const response = await fetch(url, {
@@ -64,6 +64,9 @@ async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: 
 // Main sync function
 async function syncFile(filePath: string) {
   try {
+    // Start timer
+    const t0 = performance.now();
+
     const SESSION = await getSession();
     const projectConfig = await SESSION.getProjectConfig();
     const credentials = await SESSION.getCredentials();
@@ -90,8 +93,15 @@ async function syncFile(filePath: string) {
     // Upload the file
     const response = await uploadFile(fileUrl, fileContent, authHeader);
 
+    // End timer
+    const t1 = performance.now();
     if (response.ok) {
-      logMessage(`%cFile: '%c${fileUrl}%c' synced successfully!`, LOG_COLORS.SUCCESS, LOG_COLORS.FILEPATH, LOG_COLORS.SUCCESS);
+      logMessage(
+        `%cSuccessfully synced file: %c${filePath} %c(${formatTimeAbbrev(t0, t1)})`,
+        LOG_COLORS.SUCCESS,
+        LOG_COLORS.FILEPATH,
+        LOG_COLORS.DEBUG
+      );
       Deno.exit(0); // Indicate success to parent process
     } else {
       logMessage(`%cFailed to sync file: %c${response.status} ${response.statusText}`,
