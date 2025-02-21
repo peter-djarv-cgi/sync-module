@@ -2,14 +2,13 @@
   "version": "4",
   "specifiers": {
     "jsr:@cgi/core-module@0.0.13": "0.0.13",
-    "jsr:@std/path@1.0.8": "1.0.8",
     "jsr:@std/path@^1.0.8": "1.0.8"
   },
   "jsr": {
     "@cgi/core-module@0.0.13": {
       "integrity": "65581f8ddbafa074b63f32fac409b459275bc256d5c7b6e810a546257cf80236",
       "dependencies": [
-        "jsr:@std/path@^1.0.8"
+        "jsr:@std/path"
       ]
     },
     "@std/path@1.0.8": {
