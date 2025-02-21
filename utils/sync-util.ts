@@ -1,6 +1,5 @@
-import { basename } from 'jsr:@std/path@1.0.8';
-import { getSession, LOG_COLORS, SYSTEM_PATH } from '@cgi/core-module';
-import { logMessage } from './log-util.ts';
+import { basename } from '@std/path';
+import { LOG_COLORS, SYSTEM_PATH, getSession, logMessage } from '@cgi/core-module';
 
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
   const response = await fetch(url, {
