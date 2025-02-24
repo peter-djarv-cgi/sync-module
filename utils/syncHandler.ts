@@ -25,11 +25,7 @@ async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: 
 }
 
 function getRemoteDir(host: string, remotePath?: string) {
-  if (remotePath) {
-    console.log('using remote path argument');
-    return `${host}${SYSTEM_PATH}/${remotePath}`;
-  }
-  return `${host}${SYSTEM_PATH}`;
+  return `${host}${SYSTEM_PATH}${remotePath ? `/${remotePath}` : ''}`;
 }
 
 // Main sync function
