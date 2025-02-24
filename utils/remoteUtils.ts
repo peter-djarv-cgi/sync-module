@@ -72,7 +72,7 @@ async function ensureDirectoryExists(remoteDir: string, authHeader: string): Pro
     );
     const created = await createDirectoryRecursive(remoteDir, authHeader);
     if (!created) {
-      logMessage('%CERROR: Failed to create directory on server.', LOG_COLORS.ERROR);
+      logMessage('%cERROR: Failed to create directory on server.', LOG_COLORS.ERROR);
       Deno.exit(1);
     }
     logMessage('%cDirectory created successfully!', LOG_COLORS.SUCCESS);
