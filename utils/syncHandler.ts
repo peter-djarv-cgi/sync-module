@@ -1,27 +1,10 @@
 import { basename } from '@std/path';
 import { LOG_COLORS, SYSTEM_PATH, formatTimeAbbrev, getSession, logMessage } from '@cgi/core-module';
-import { ensureDirectoryExists } from './remoteUtils.ts';
-
-// Builds the Basic Auth header for file synchronization
-function buildAuthHeader(username: string, password: string): string {
-  return 'Basic ' + btoa(`${username}:${password}`);
-}
+import { buildAuthHeader, ensureDirectoryExists, uploadFile } from './remoteUtils.ts';
 
 // Reads the local file content
 async function readLocalFile(filePath: string): Promise<Uint8Array> {
   return await Deno.readFile(filePath);
-}
-
-// Uploads the file to the remote server using a PUT request
-async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: string): Promise<Response> {
-  return await fetch(fileUrl, {
-    method: 'PUT',
-    headers: {
-      'Authorization': authHeader,
-      'Content-Type': 'application/octet-stream',
-    },
-    body: fileContent,
-  });
 }
 
 function getRemoteDir(host: string, remotePath?: string) {

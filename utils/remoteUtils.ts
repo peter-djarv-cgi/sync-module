@@ -1,5 +1,10 @@
 import { LOG_COLORS, logMessage } from '@cgi/core-module';
 
+// Builds the Basic Auth header for file synchronization
+function buildAuthHeader(username: string, password: string): string {
+  return 'Basic ' + btoa(`${username}:${password}`);
+}
+
 async function directoryExists(url: string, authHeader: string): Promise<boolean> {
   const response = await fetch(url, {
     method: 'PROPFIND',
@@ -74,6 +79,20 @@ async function ensureDirectoryExists(remoteDir: string, authHeader: string): Pro
   }
 }
 
+// Uploads the file to the remote server using a PUT request
+async function uploadFile(fileUrl: string, fileContent: Uint8Array, authHeader: string): Promise<Response> {
+  return await fetch(fileUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': authHeader,
+      'Content-Type': 'application/octet-stream',
+    },
+    body: fileContent,
+  });
+}
+
 export {
+  buildAuthHeader,
   ensureDirectoryExists,
+  uploadFile,
 };
