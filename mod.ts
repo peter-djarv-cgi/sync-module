@@ -1,5 +1,5 @@
 import { LOG_COLORS, logMessage } from '@cgi/core-module';
-import { syncFile } from './utils/syncManager.ts';
+import { syncFile } from './utils/syncHandler.ts';
 
 function parseFlags(): { filePath: string; remotePath?: string } {
   const args = Deno.args;
