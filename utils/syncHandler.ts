@@ -38,7 +38,10 @@ async function syncFile(filePath: string, remotePath?: string) {
     const fileName = basename(filePath);
     const fileUrl = `${remoteDir}/${fileName}`;
 
-    logMessage(`%cSyncing file: %c${fileName}`, LOG_COLORS.INFO, LOG_COLORS.FILEPATH);
+    logMessage(`%cSyncing file: %c${fileName}`,
+      LOG_COLORS.INFO,
+      LOG_COLORS.FILEPATH,
+    );
 
     // Upload the file
     const response = await uploadFile(fileUrl, fileContent, authHeader);
@@ -50,7 +53,7 @@ async function syncFile(filePath: string, remotePath?: string) {
         `%cSuccessfully synced file: %c${filePath} %c(${formatTimeAbbrev(t0, t1)})`,
         LOG_COLORS.SUCCESS,
         LOG_COLORS.FILEPATH,
-        LOG_COLORS.DEBUG
+        LOG_COLORS.DEBUG,
       );
       Deno.exit(0); // Indicate success to parent process
     } else {
