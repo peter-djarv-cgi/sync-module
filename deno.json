@@ -12,7 +12,7 @@
     "checkJs": true
   },
   "imports": {
-    "@cgi/core-module": "jsr:@cgi/core-module@0.0.17",
+    "@cgi/core-module": "jsr:@cgi/core-module@^0.0.20",
     "@std/path": "jsr:@std/path@^1.0.8"
   }
 }

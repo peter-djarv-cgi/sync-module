@@ -1,13 +1,13 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@cgi/core-module@0.0.17": "0.0.17",
+    "jsr:@cgi/core-module@0.0.20": "0.0.20",
     "jsr:@std/fs@^1.0.13": "1.0.13",
     "jsr:@std/path@^1.0.8": "1.0.8"
   },
   "jsr": {
-    "@cgi/core-module@0.0.17": {
-      "integrity": "7d7091e4b9dc6e9c1a4e4540e6b3c8b24604d86e83db3b1064b7cdb9d460d6cc",
+    "@cgi/core-module@0.0.20": {
+      "integrity": "a53bc3179f77e35b8754f3024dbb249b996c65e2c957857932c90101b4012669",
       "dependencies": [
         "jsr:@std/fs",
         "jsr:@std/path"
@@ -25,7 +25,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@cgi/core-module@0.0.17",
+      "jsr:@cgi/core-module@0.0.20",
       "jsr:@std/path@^1.0.8"
     ]
   }
