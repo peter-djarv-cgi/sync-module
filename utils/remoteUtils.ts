@@ -1,4 +1,5 @@
 import { LOG_COLORS, logMessage } from '@cgi/core-module';
+import { normalize } from '@std/path';
 
 // Builds the Basic Auth header for file synchronization
 function buildAuthHeader(username: string, password: string): string {
@@ -65,7 +66,7 @@ async function ensureDirectoryExists(remoteDir: string, authHeader: string): Pro
   const directoryExistsResult = await directoryExists(remoteDir, authHeader);
 
   if (!directoryExistsResult) {
-    logMessage(`%cRemote directory '%c${remoteDir}%c' does not exist. Creating...`,
+    logMessage(`%cRemote directory '%c${normalize(remoteDir)}%c' does not exist. Creating...`,
       LOG_COLORS.INFO,
       LOG_COLORS.FILEPATH,
       LOG_COLORS.INFO,

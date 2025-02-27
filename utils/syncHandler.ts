@@ -1,4 +1,4 @@
-import { basename } from '@std/path';
+import { basename, normalize } from '@std/path';
 import { LOG_COLORS, SYSTEM_PATH, formatTimeAbbrev, getSession, logMessage } from '@cgi/core-module';
 import { buildAuthHeader, ensureDirectoryExists, uploadFile } from './remoteUtils.ts';
 
@@ -50,7 +50,7 @@ async function syncFile(filePath: string, remotePath?: string) {
     const t1 = performance.now();
     if (response.ok) {
       logMessage(
-        `%cSuccessfully synced file: %c${filePath} %c(${formatTimeAbbrev(t0, t1)})`,
+        `%cSuccessfully synced file: %c${normalize(filePath)} %c(${formatTimeAbbrev(t0, t1)})`,
         LOG_COLORS.SUCCESS,
         LOG_COLORS.FILEPATH,
         LOG_COLORS.DEBUG,
